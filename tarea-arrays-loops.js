@@ -8,9 +8,9 @@ Examples:
 
 Note: This approach uses the absolute value of each resistance to ensure all values are positive.
 */
+//?Holi, probando 3
 
-
-const Resistors = [-1,5,6,3]; // Holii 2 probando
+const Resistors = [-1,5,6,3]; 
 //const Resistors = [14,3,5,6];
 //const Resistors = [8,15,100];
 SumResistors = 0;
