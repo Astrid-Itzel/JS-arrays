@@ -8,7 +8,6 @@ Examples:
 
 Note: This approach uses the absolute value of each resistance to ensure all values are positive.
 */
-//?Holi, probandooooo 5 :) 
 
 const Resistors = [-1,5,6,3]; 
 //const Resistors = [14,3,5,6];
@@ -135,26 +134,53 @@ console.log (calcDominant ([-1, -3, -5, 4, 6767]));
 Example:
 - For the array `[1,2,3,5,22,6]`, the result should be `[3.5, 12, 4]`.
 */
-//const Num = [1,2,3,7,5,22,6]
 
+function splitArray(inputArray){
+    inputArray
+    let length = inputArray.length;
+    length
+    let firstHalf = []; 
+    let secondHalf = [];
 
-const Num = [1,2,3,5,22,6]
-
-function SumArrays (firstHalf, secondHalf){
-i=0
-    if (Num.length % 2 != 0){
-    firstHalf = Num.slice(0, Math.floor(Num.length/2)); //la mitad de la longitud de 7 elementos, sería 3.5, el método Math.floor redondea hacía abajo esta cifra, quedando en 3. slice (0,3). Slice es excluyecte, por lo que ya no toma el índice 3)
-    secondHalf = Num.slice(Math.ceil(Num.length/2), Num.length); //Math.ceil redondea hacia arriba, por lo que iniciará desde el índice 4, y como slice es excluyente el último número de longitud, es decir 7, ya no se toma; sólo llega hast índice 6, siendo el último dato de la lista.
+    if (length % 2 != 0) {
+        //la mitad de la longitud de 7 elementos, sería 3.5, el método Math.floor redondea hacía abajo esta cifra, quedando en 3. slice (0,3). Slice es excluyecte, por lo que ya no toma el índice 3)
+        firstHalf = inputArray.slice(0, Math.floor(length/ 2)); 
+        //Math.ceil redondea hacia arriba, por lo que iniciará desde el índice 4, y como slice es excluyente el último número de longitud, es decir 7, ya no se toma; sólo llega hast índice 6, siendo el último dato de la lista.
+        secondHalf = inputArray.slice(Math.ceil(length/ 2), length); 
+    } else {
+        //La mitad de la longitud es un número mayor al índice, pero dado que slice es excluyente, ya no toma el último elemento. Quedando Num.slice (0,3) en una lista de 6 elementos.
+        firstHalf = inputArray.slice(0, length / 2); 
+        secondHalf = inputArray.slice(length / 2, length);
     }
-    else {
-    firstHalf = Num.slice(0, Num.length/2);//La mitad de la longitud es un número mayor al índice, pero dado que slice es excluyente, ya no toma el último elemento. Quedando Num.slice (0,3) en una lista de 6 elementos. 
-    secondHalf = Num.slice(Num.length/2, Num.length);
-    }
+    return [firstHalf, secondHalf]
+}
 
-for (i=0; i< firstHalf.length; 1++) {
-        SecondHalf = secondHalf.reverse();
-        firstHalf = [];
-        SumArrays.push (firstHalf[i] + secondHalf[i]);
+function sumArrays(first, second){
+    let result = []
+    let length = first.length
+    for(let index=0; index < length; index++){
+        result[index] = first[index] + second[index]
+    }
+    return result
 }
-console.log (SumArrays);
+
+
+function divideArrayby2(inputArray){
+    let result = []
+    for(let number of inputArray){
+        result.push(number/2)
+    }
+    return result
 }
+
+let testEven= [1,2,3,7,5,22,6]
+let testOdd = [1,2,3,4,5]
+
+let result = splitArray(testEven);
+let firstHalf = result[0]; //index 0
+let secondHalf = result[1]; // index 1
+secondHalf.reverse();
+let sumOfTwoArrays = sumArrays(firstHalf, secondHalf);
+let finalResult =  divideArrayby2(sumOfTwoArrays);
+
+console.log(finalResult);
