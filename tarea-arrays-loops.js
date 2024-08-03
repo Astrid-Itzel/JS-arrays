@@ -8,7 +8,7 @@ Examples:
 
 Note: This approach uses the absolute value of each resistance to ensure all values are positive.
 */
-//?Holi, probando 4 :) 
+//?Holi, probandooooo 5 :) 
 
 const Resistors = [-1,5,6,3]; 
 //const Resistors = [14,3,5,6];
